@@ -1,0 +1,41 @@
+baseURL: "https://www.azurata.me/"
+languageCode: "en-us"
+title: "azurata.me"
+theme: "PaperMod"
+publishDir: docs
+
+params:
+  disableThemeToggle: true
+  defaultTheme: "dark"
+
+  profileMode:
+    enabled: true
+    title: "azurata"
+    imageUrl: "https://gravatar.com/avatar/e35da8837c92d1dafa012bd6118e1b6b?s=512"
+    imageWidth: 360
+    imageHeight: 360
+
+  socialIcons: # optional
+    - name: "email"
+      url: "mailto:azurata45@gmail.com"
+    - name: "github"
+      url: "https://github.com/azurata45"
+    - name: "gitlab"
+      url: "https://gitlab.com/azurata45"
+    - name: "instagram"
+      url: "https://www.instagram.com/azurata45"
+    - name: "keybase"
+      url: "https://keybase.io/azurata"
+    - name: "telegram"
+      url: "https://telegram.me/azurata"
+    - name: "twitter"
+      url: "https://twitter.com/azurata45"
+
+menu:
+  main:
+    - identifier: home
+      name: Home
+      url: /
+    - identifier: about
+      name: About Me
+      url: /about

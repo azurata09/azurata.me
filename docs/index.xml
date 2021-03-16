@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>azurata.me</title>
+    <link>https://www.azurata.me/</link>
+    <description>Recent content on azurata.me</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="https://www.azurata.me/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About Me</title>
+      <link>https://www.azurata.me/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.azurata.me/about/</guid>
+      <description>Profile I&amp;rsquo;m a student learning computer engineering in Future University Hakodate since April 2021.
+In former, I was learning in prefectural school in Okinawa, Japan until March 2021.
+I&amp;rsquo;m interested in Entertainment content with ICT.
+Skills  Web Frontend Object-Oriented-Programming Networking  Awards  ET Software Design Robot Contest in Okinawa, Grand Champion  Qualified  IT Passport(National exam in Japan) Cisco Networking Academy  CCNA R&amp;amp;S: Introduction to Networks CCNA R&amp;amp;S: Routing and Switching Essentials Introduction to Cybersecurity    </description>
+    </item>
+    
+    <item>
+      <title>Works</title>
+      <link>https://www.azurata.me/works/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.azurata.me/works/</guid>
+      <description>AiRPS AiRPS is etRobocon Primary System aaa
+like framework</description>
+    </item>
+    
+  </channel>
+</rss>

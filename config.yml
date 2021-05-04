@@ -17,7 +17,7 @@ params:
 
   socialIcons: # optional
     - name: "email"
-      url: "mailto:azurata45@gmail.com"
+      url: "mailto:contact@azurata.me"
     - name: "github"
       url: "https://github.com/azurata45"
     - name: "gitlab"

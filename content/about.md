@@ -4,21 +4,20 @@ title: About Me
 
 ## Profile
 
-I'm a student learning computer engineering in Future University Hakodate since April 2021.
+I'm a student learning computer science in Future University Hakodate since April 2021.
 
-In former, I was learning in prefectural school in Okinawa, Japan until March 2021.
+In former, I was learning in prefectural high school in Okinawa, Japan until March 2021.
 
-I'm interested in Entertainment content with ICT.
+I'm interested in ubiquitous computing and entertainment systems with it.
 
 ## Skills
 
 - Web Frontend
-- Object-Oriented-Programming
-- Networking
+- ITRON Application
 
 ## Awards
 
-- ET Software Design Robot Contest in Okinawa, Grand Champion
+- ET Software Design Robot Contest 2019 in Okinawa, Grand Champion
 
 ## Qualified
 

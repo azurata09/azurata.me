@@ -39,6 +39,6 @@ menu:
     - identifier: about
       name: About Me
       url: /about
-    - identifier: about
+    - identifier: history
       name: History
       url: /history

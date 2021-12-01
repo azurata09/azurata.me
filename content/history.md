@@ -21,7 +21,7 @@ title: History
 - Got IT Passport
 - Got CCNA R&S: Routing and Switching Essentials
 - Got Introduction to Cybersecurity
-- Got Contributed to [Code-for-OKINAWA/covid19](https://github.com/Code-for-OKINAWA/covid19)
+- Contributed to [Code-for-OKINAWA/covid19](https://github.com/Code-for-OKINAWA/covid19)
 
 ## 2021
 

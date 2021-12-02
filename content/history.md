@@ -25,4 +25,4 @@ title: History
 
 ## 2021
 
-- Continued on to [Future University Hakodate](https://www.fun.ac.jp)
+- Entered [Future University Hakodate](https://www.fun.ac.jp)

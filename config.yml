@@ -30,6 +30,8 @@ params:
       url: "https://telegram.me/azurata"
     - name: "twitter"
       url: "https://twitter.com/azurata09_"
+    - name: "mastodon"
+      url: "https://mstdn.maud.io/@azurata09"
 
 menu:
   main:

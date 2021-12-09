@@ -1,5 +1,33 @@
 <!doctype html><html lang=en dir=auto><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Posts | azurata.me</title><meta name=keywords content><meta name=description content><meta name=author content><link rel=canonical href=https://www.azurata.me/posts/><link href=/assets/css/stylesheet.min.1eef9c740af75b4e5f773d9d5f757e03e3df71f3a308e73070cc73d55a59a7d7.css integrity="sha256-Hu+cdAr3W05fdz2dX3V+A+PfcfOjCOcwcMxz1VpZp9c=" rel="preload stylesheet" as=style><link rel=icon href=https://www.azurata.me/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://www.azurata.me/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://www.azurata.me/favicon-32x32.png><link rel=apple-touch-icon href=https://www.azurata.me/apple-touch-icon.png><link rel=mask-icon href=https://www.azurata.me/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><meta name=generator content="Hugo 0.85.0"><link rel=alternate type=application/rss+xml href=https://www.azurata.me/posts/index.xml><meta property="og:title" content="Posts"><meta property="og:description" content><meta property="og:type" content="website"><meta property="og:url" content="https://www.azurata.me/posts/"><meta name=twitter:card content="summary"><meta name=twitter:title content="Posts"><meta name=twitter:description content><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://www.azurata.me/posts/"}]}</script></head><body class="list dark" id=top><noscript><style type=text/css>#theme-toggle,.top-link{display:none}</style></noscript><header class=header><nav class=nav><div class=logo><a href=https://www.azurata.me/ accesskey=h title="azurata.me (Alt + H)">azurata.me</a>
-<span class=logo-switches></span></div><ul id=menu onscroll=menu_on_scroll()><li><a href=https://www.azurata.me/about title="About Me"><span>About Me</span></a></li><li><a href=https://www.azurata.me/history title=History><span>History</span></a></li><li><a href=https://www.azurata.me/ title=Home><span>Home</span></a></li></ul></nav></header><main class=main><header class=page-header><h1>Posts</h1></header><article class=post-entry><header class=entry-header><h2>Weekly azurata ~8/27</h2></header><section class=entry-content><p>やったこと 集中講義受けた モデル図書き終えた ちょっとだけETロボコンのプログラム進めた 今年の経験を踏まえて来年のETロボコンをどう進めるか書き出してみた わかったこと エントリー参加者にはLinuxとかWSLの話から始めるべきかも 締め切りギリギリに成果物を作り始めない つぎやること ETロボコンのプログラムの作成 とりあえずPID制御で走るまで 運動する ...</p></section><footer class=entry-footer></footer><a class=entry-link aria-label="post link to Weekly azurata ~8/27" href=https://www.azurata.me/posts/weekly-08-27/></a></article><article class=post-entry><header class=entry-header><h2>個人向けWikiシステムの考察</h2></header><section class=entry-content><p>Boost Note ほぼGitHub Markdown．昔は今でいうLocal Storageのみしか使えなかったのでGitHubやOneDriveなどを利用していた．今は公式が共有する手段を用意しているが，使いづらい
+<span class=logo-switches></span></div><ul id=menu onscroll=menu_on_scroll()><li><a href=https://www.azurata.me/about title="About Me"><span>About Me</span></a></li><li><a href=https://www.azurata.me/history title=History><span>History</span></a></li><li><a href=https://www.azurata.me/ title=Home><span>Home</span></a></li></ul></nav></header><main class=main><header class=page-header><h1>Posts</h1></header><article class=post-entry><header class=entry-header><h2>ETロボコンへのお誘い</h2></header><section class=entry-content><p>この記事は公立はこだて未来大学 Advent Calendar 2021 10日目の記事です。
+昨日はmaterialofmouseさんの「あわの生態」でしたね。僕があわさんを知ったきっかけは以前のAdvent Calenderだったのですが、入学式前のオリエンテーションで話しかけてくださった時に「君Twitterやってる？僕これなんだけど」と言ってTwitterのプロフィールを見せていただいて1、「あ、僕は本当に未来大に来たんだな」などと変な感動に浸ったのを覚えています。
+自己紹介 沖縄県出身のB1。情報科高校出身。趣味はアイマス(ビートシューター, Straylight)2。
+詳しくはここ見てもらえば分かると思います。
+ETロボコンとは ETは組込み技術(Embedded Technology)の略称で、ロボコンは皆さんご存知の通り、ロボットコンテストの略称です3。
+ロボコンと言えばNHKの高専ロボコンを想像しますよね。
+僕は高専ロボコンを見るのが好きです。(見るようになったのは高校生からですが…)
+高専のロボコンはハードウェアの設計から必要になります。
+しかし、ETロボコンはハードウェアが全チーム固定です。こんな形をしています。
+2021年度の走行体 ETロボコンではこのLEGOで作られたロボットのことを「走行体」と呼びます。
+この走行体を走らせる競技が全国12地区で展開され、その各地区の上位チームで争うチャンピオンシップ大会が横浜のみなとみらいで開催されています4。
+競技内容 難易度が3つあるのですが、今回は2番目である「プライマリークラス」について説明します。
+評価項目は以下の2つです。
+モデル図 UMLや任意の図などを用いてシステムの設計意図を示します。
+実際のモデル図 ちなみにこの画像は実際に今年度提出したモデル図で、モデル図の最初のページ(アブストラクトを除く)にあたる機能モデルのページです。
+走行 スタートからゴールまでの実際の走行タイムから、突破した難所に応じて指定された秒数を引いた秒数が結果となります。
+細かいルールや、課される課題は以下の動画で解説されているので見てみてください。
+ちなみにですが、今年のプライマリークラスの最高記録は-10.5秒です5。
+実際の走行 以下から今年のCS大会の様子を確認できます。
+ETロボコンに参加してよかったこと 単純に知識が増える 基本的には以下についての知識を得ることができます。
+コンピュータ オブジェクト指向 UML チーム開発 C++ これら以外にも、色々な技術を使えば使うほど勉強できることが増えます。
+大人に認識してもらえる これは、良い成績を残した場合に限りますが、実行委員の方々に認識して貰えるのが結構自分の自信になります。
+僕自身、高校生のときに出場した際は、某大学の教授に顔と名前を覚えていただいた時は嬉しかったです6。
+単純に楽しい 難所の制御フローを考えて、それをどうプログラムやモデルで表現するかというのは非常に楽しいです。
+というかそもそもやってて楽しいから2度目をやる気になりましたし、これからも続けるつもりです。
+まとめと勧誘 というわけでETロボコンの紹介をしました。ETロボコンに興味を持ってもらえたでしょうか？参加に関しては僕がとりまとめているので僕に連絡していただければ、詳しい説明など対応させていただきます。是非TwitterからDMしてください！
+また、気になったら、実行委員会が公開しているサンプルプログラムも是非読んでみてください。だいぶ読みやすいです。
+明日12月11日はしっしー(竹フクロウ)さんです。内容が出ていませんが、気になりますね。
+それではまた来年のアドベントカレンダーでお会いしましょう！...</p></section><footer class=entry-footer></footer><a class=entry-link aria-label="post link to ETロボコンへのお誘い" href=https://www.azurata.me/posts/2021-12-10-00/></a></article><article class=post-entry><header class=entry-header><h2>Weekly azurata ~8/27</h2></header><section class=entry-content><p>やったこと 集中講義受けた モデル図書き終えた ちょっとだけETロボコンのプログラム進めた 今年の経験を踏まえて来年のETロボコンをどう進めるか書き出してみた わかったこと エントリー参加者にはLinuxとかWSLの話から始めるべきかも 締め切りギリギリに成果物を作り始めない つぎやること ETロボコンのプログラムの作成 とりあえずPID制御で走るまで 運動する ...</p></section><footer class=entry-footer></footer><a class=entry-link aria-label="post link to Weekly azurata ~8/27" href=https://www.azurata.me/posts/weekly-08-27/></a></article><article class=post-entry><header class=entry-header><h2>個人向けWikiシステムの考察</h2></header><section class=entry-content><p>Boost Note ほぼGitHub Markdown．昔は今でいうLocal Storageのみしか使えなかったのでGitHubやOneDriveなどを利用していた．今は公式が共有する手段を用意しているが，使いづらい
 Scrapbox Markdownで書けないのが好みではない
 Notion 現状ベスト．挙動が怪しいところがあるものの，Markdownで書けるうえ機能もモリモリ...</p></section><footer class=entry-footer></footer><a class=entry-link aria-label="post link to 個人向けWikiシステムの考察" href=https://www.azurata.me/posts/2021-08-12-00/></a></article></main><footer class=footer><span>&copy; 2021 <a href=https://www.azurata.me/>azurata.me</a></span>
 <span>&#183;</span>

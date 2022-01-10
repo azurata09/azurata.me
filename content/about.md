@@ -8,8 +8,6 @@ I'm a student learning computer science in Future University Hakodate since Apri
 
 In former, I was learning in prefectural high school in Okinawa, Japan until March 2021.
 
-I'm interested in ubiquitous computing and entertainment systems with it.
-
 ## Skills
 
 - Web Frontend

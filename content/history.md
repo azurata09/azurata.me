@@ -22,6 +22,7 @@ title: History
 - Got CCNA R&S: Routing and Switching Essentials
 - Got Introduction to Cybersecurity
 - Contributed to [Code-for-OKINAWA/covid19](https://github.com/Code-for-OKINAWA/covid19)
+- Attend to Security Minicamp in Okinawa
 
 ## 2021
 

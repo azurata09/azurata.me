@@ -4,14 +4,27 @@ title: About Me
 
 ## Profile
 
-I'm a student learning computer science in Future University Hakodate since April 2021.
+I'm a student learning computer science in Future University Hakodate.
 
-In former, I was learning in prefectural high school in Okinawa, Japan until March 2021.
+If you want to know my history, read [History](/history)
 
-## Skills
+## Studying
 
-- Web Frontend
-- ITRON Application
+- ITRON application
+- Robot Control
+- Web Application
+- Object-Oriented Programming
+
+## Language
+
+- C, C++
+- Java
+  - Processing
+- JavaScript
+  - Vue
+  - React
+- Python
+- UML
 
 ## Awards
 

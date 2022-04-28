@@ -27,3 +27,7 @@ title: History
 ## 2021
 
 - Entered [Future University Hakodate](https://www.fun.ac.jp)
+- Participate SmileHackathon, and Got 3rd place
+
+## 2022
+- Enroll in Intelligent Systems Course, Department of Complex and Intelligent Systems

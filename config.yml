@@ -44,3 +44,6 @@ menu:
     - identifier: history
       name: History
       url: /history
+    - identifier: works
+      name: Works
+      url: /works

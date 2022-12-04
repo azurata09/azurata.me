@@ -29,6 +29,7 @@ If you want to know my history, read [History](/history)
 ## Awards
 
 - ET Software Design Robot Contest 2019 in Okinawa, Grand Champion
+- ET Software Design Robot Contest 2022 in Hokkaido, 2nd place, Silver model
 
 ## Qualified
 

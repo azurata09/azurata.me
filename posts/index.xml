@@ -35,7 +35,32 @@ ETロボコンに参加してよかったこと 単純に知識が増える 基�
 学生の集合をSとしたとき、s_i, s_j ∈ S, 0 &amp;lt;= i, j =&amp;lt; |S|, i ≠ jとする。また、学生sのGPはGP(s)と表わす。
 s_i &amp;gt;= s_jとは、s_iとs_jが必修科目でF評価を受けていない、または両方ともF評価を受けたときはGP(s_i) &amp;gt;= GP(s_j)、もしくはs_jのみが必修科目でF評価を受けたときは絶対にs_i &amp;gt;= s_jとする。
 これを降順にソートすると自然と最初の学生から希望を優先していけばよいです。これをJavaのComparableインターフェースをimplementしたクラスで実装するとこうなります。
-@Override public int compareTo(Student that) { // Failed both students, or not failed both students if((this.hasFailed() &amp;amp;&amp;amp; that.hasFailed()) || !this.hasFailed() &amp;amp;&amp;amp; !that.hasFailed()) { if(this.getScoreSum() == that.getScoreSum()) { return 0; } return this.getScoreSum() &amp;gt; that.</description></item><item><title>個人向けWikiシステムの考察</title><link>https://www.azurata.me/posts/2021-08-12-00/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://www.azurata.me/posts/2021-08-12-00/</guid><description>Boost Note ほぼGitHub Markdown．昔は今でいうLocal Storageのみしか使えなかったのでGitHubやOneDriveなどを利用していた．今は公式が共有する手段を用意しているが，使いづらい
+@Override public int compareTo(Student that) { // Failed both students, or not failed both students if((this.hasFailed() &amp;amp;&amp;amp; that.hasFailed()) || !this.hasFailed() &amp;amp;&amp;amp; !that.hasFailed()) { if(this.getScoreSum() == that.getScoreSum()) { return 0; } return this.getScoreSum() &amp;gt; that.</description></item><item><title>ブラックフライデーで買ったもの</title><link>https://www.azurata.me/posts/2023-12-03-00/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://www.azurata.me/posts/2023-12-03-00/</guid><description>はじめに 本記事は「あらた界隈とそのまわりとそのまわりとそのまわり 訳: だれでも参加可能 なアドカレ 2023 ドキッ!？オタクだらけのアドベントカレンダー(完走するとは言っていない)」、略してあらた界隈アドベントカレンダー3日目のエントリーになります。
+内容は色々考えましたが、16時半に起きたので今すぐ書けるやつにしました。
+買ったもの 防水スマホケース 風呂でスマホが使いたかったので買いました。
+https://amzn.asia/d/8ZgRaI4
+LANケーブル 有線LANしか使えないWindows機を持っているのですが、引っ越した後に持っているケーブルの長さが足りなくなって実質的に使えなくなりました。 幸いケーブルを延長する機器は持っていたので、足りない分の長さのケーブルを買いました。
+https://amzn.asia/d/8ZgRaI4
+モバイルバッテリー 元々モバイルバッテリーは持っていましたが、買ったのが中学生の時だったので発火が怖い時期です。 なので新調しよう。ということで買いました。
+https://amzn.asia/d/5gIp7RB
+USB-C 充電器 小さい充電器がなく、旅行時にデカい4つ口の充電器を持って行くのが億劫になっていたので買いました。
+https://amzn.asia/d/gki1Eai
+柔軟剤 なんか普段使いの柔軟剤が安かったので&amp;hellip;
+https://amzn.asia/d/90UJC0W
+抗菌ビーズ 同上。
+https://amzn.asia/d/ixnpMPi
+電源タップ ベッド周りの電源が足りなかったので買いました。これでPCの充電しながらスマホの充電ができる。 将来的にはAlexaもPCデスクじゃなくて、ベッド近くに置いたデスクに置きたいですな。
+https://amzn.asia/d/hRXDTeW
+水 定番ですね。もうあと1本しかありません。消費早いな。
+https://amzn.asia/d/6yW7bOO
+カラーボックス 1つ持っていますが、埋まったので買いました。 机の横に置いて普段使う本を収めています。
+https://amzn.asia/d/4P8Mf1b
+蒸気でホットアイマスク だいぶ前に何かで貰って札幌行きの高速バスで使ったのですが、全く別の要因でリラックスできなかったので、この際にいっぱい買ってみるかということで買ってみました。 次に高速バスに乗るのは恐らく2月あたりなので楽しみです。
+https://amzn.asia/d/bL5HdDm
+コーラ なぜかブラックフライデーではないのに今より300円くらい安くなってたので買いました。 普段愛飲しているという点も大きいですね。
+https://amzn.asia/d/7KNVQ0Z
+おわりに 上に書いてないものもいくつかありますが、だいたい2万円くらい使っちゃいました。 マジで金欠です。なのにまた4万使ってしまいました。
+バイトがんばります。おわり。</description></item><item><title>個人向けWikiシステムの考察</title><link>https://www.azurata.me/posts/2021-08-12-00/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://www.azurata.me/posts/2021-08-12-00/</guid><description>Boost Note ほぼGitHub Markdown．昔は今でいうLocal Storageのみしか使えなかったのでGitHubやOneDriveなどを利用していた．今は公式が共有する手段を用意しているが，使いづらい
 Scrapbox Markdownで書けないのが好みではない
 Notion 現状ベスト．挙動が怪しいところがあるものの，Markdownで書けるうえ機能もモリモリ</description></item><item><title>僕という人間 2022年版</title><link>https://www.azurata.me/posts/2022-03-20-00/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://www.azurata.me/posts/2022-03-20-00/</guid><description>どうも。ENTP-Tのあずらたです。今回はポエムです。
 ついこの間、16 Personalitiesというものを1年ぶりにやりました。

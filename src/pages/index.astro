@@ -10,13 +10,13 @@ const experience = await getCollection('experience');
 
 // リスト形式のデータ（単一ファイルから取得）
 const certificationsEntry = await getEntry('certifications', 'list');
-const certifications = certificationsEntry?.data || [];
+const certifications = (certificationsEntry?.data || []).map((item: any, index: number) => ({ ...item, id: `cert-${index}` }));
 
 const awardsEntry = await getEntry('awards', 'list');
-const awards = awardsEntry?.data || [];
+const awards = (awardsEntry?.data || []).map((item: any, index: number) => ({ ...item, id: `award-${index}` }));
 
 const presentationsEntry = await getEntry('presentations', 'list');
-const presentations = presentationsEntry?.data || [];
+const presentations = (presentationsEntry?.data || []).map((item: any, index: number) => ({ ...item, id: `pres-${index}` }));
 
 const projects = await getCollection('projects');
 const sortedProjects = await Promise.all(
@@ -85,7 +85,7 @@ const englishName = "azurata";
 					<div class="relative pl-4 border-l-2 border-slate-200">
 						<span class="text-sm text-slate-500 block mb-1">{item.data.period}</span>
 						<h3 class="font-bold text-slate-800">
-							{item.data.url ? <a href={item.data.url} class="hover:text-blue-600">{item.data.institution}</a> : item.data.institution}
+							{item.data.url ? <a href={item.data.url} class="hover:text-blue-600" target="_blank" rel="noopener noreferrer">{item.data.institution}</a> : item.data.institution}
 						</h3>
 						<p class="text-sm text-slate-600">{item.data.department}</p>
 					</div>
@@ -100,7 +100,7 @@ const englishName = "azurata";
 					<div class="relative pl-4 border-l-2 border-slate-200">
 						<span class="text-sm text-slate-500 block mb-1">{item.data.period}</span>
 						<h3 class="font-bold text-slate-800">
-							{item.data.url ? <a href={item.data.url} class="hover:text-blue-600">{item.data.company}</a> : item.data.company}
+							{item.data.url ? <a href={item.data.url} class="hover:text-blue-600" target="_blank" rel="noopener noreferrer">{item.data.company}</a> : item.data.company}
 						</h3>
 						<p class="text-sm text-slate-600 mb-2">{item.data.role}</p>
 						{item.data.description && <p class="text-xs text-slate-500">{item.data.description}</p>}
@@ -120,11 +120,23 @@ const englishName = "azurata";
 					<span class="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
 					資格
 				</h3>
-				<ul class="grid sm:grid-cols-2 gap-x-8 gap-y-2 text-slate-700">
+				<ul class="space-y-4 text-slate-700">
 					{certifications.map((item: any) => (
-						<li class="flex justify-between items-start">
-							<span class="text-sm">{item.name}</span>
-							{item.issuer && <span class="text-xs text-slate-400 ml-2 whitespace-nowrap">({item.issuer})</span>}
+						<li class="flex flex-col sm:flex-row sm:justify-between items-start gap-1 border-l-2 border-blue-100 pl-4 group">
+							<div class="flex flex-col gap-1">
+                <span class="text-sm flex items-center gap-1">
+                  {item.description ? (
+                    <button class="modal-trigger text-left hover:text-blue-600 transition-colors font-medium" data-modal-id={`modal-${item.id}`}>
+                      {item.name}
+                    </button>
+                  ) : (
+                    item.url ? <a href={item.url} target="_blank" rel="noopener noreferrer" class="hover:text-blue-600 transition-colors font-medium">{item.name}</a> : <span class="font-medium">{item.name}</span>
+                  )}
+                  {item.url && !item.description && <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>}
+                </span>
+							  {item.issuer && <span class="text-xs text-slate-500">{item.issuer}</span>}
+              </div>
+              {item.date && <span class="text-xs text-slate-400 whitespace-nowrap">{item.date}</span>}
 						</li>
 					))}
 				</ul>
@@ -137,9 +149,16 @@ const englishName = "azurata";
 				</h3>
 				<ul class="space-y-3">
 					{awards.map((item: any) => (
-						<li class="flex flex-col sm:flex-row sm:justify-between items-start gap-1 border-l-2 border-orange-100 pl-4">
-							<span class="text-sm text-slate-700">
-								{item.url ? <a href={item.url} class="text-blue-600 hover:underline">{item.title}</a> : item.title}
+						<li class="flex flex-col sm:flex-row sm:justify-between items-start gap-1 border-l-2 border-orange-100 pl-4 group">
+							<span class="text-sm text-slate-700 flex items-center gap-1">
+								{item.description ? (
+                  <button class="modal-trigger text-left hover:text-blue-600 transition-colors font-medium" data-modal-id={`modal-${item.id}`}>
+                    {item.title}
+                  </button>
+                ) : (
+                  item.url ? <a href={item.url} target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">{item.title}</a> : item.title
+                )}
+                {item.url && !item.description && <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>}
 							</span>
 							<span class="text-xs text-slate-400 whitespace-nowrap">{item.date}</span>
 						</li>
@@ -154,9 +173,16 @@ const englishName = "azurata";
 				</h3>
 				<ul class="space-y-4">
 					{presentations.map((item: any) => (
-						<li class="flex flex-col gap-1 border-l-2 border-green-100 pl-4">
-							<span class="text-sm font-medium text-slate-700">
-								{item.url ? <a href={item.url} class="text-blue-600 hover:underline">{item.title}</a> : item.title}
+						<li class="flex flex-col gap-1 border-l-2 border-green-100 pl-4 group">
+							<span class="text-sm font-medium text-slate-700 flex items-center gap-1">
+								{item.description ? (
+                  <button class="modal-trigger text-left hover:text-blue-600 transition-colors" data-modal-id={`modal-${item.id}`}>
+                    {item.title}
+                  </button>
+                ) : (
+                  item.url ? <a href={item.url} target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">{item.title}</a> : item.title
+                )}
+                {item.url && !item.description && <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>}
 							</span>
 							<span class="text-xs text-slate-500">{item.event}</span>
 						</li>
@@ -172,8 +198,8 @@ const englishName = "azurata";
 		<div class="grid sm:grid-cols-2 gap-6">
 			{sortedProjects.map(project => (
 				<button 
-          class="project-card text-left bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-all group"
-          data-project-id={project.id}
+          class="modal-trigger text-left bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-all group"
+          data-modal-id={`modal-${project.id}`}
         >
 					<h3 class="font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">{project.data.title}</h3>
 					<p class="text-sm text-slate-600 mb-4 line-clamp-2">{project.data.description}</p>
@@ -188,36 +214,41 @@ const englishName = "azurata";
 		</div>
 	</section>
 
-  {/* Modals for Project Details */}
-  {sortedProjects.map(project => (
-    <dialog id={`modal-${project.id}`} class="fixed inset-0 m-auto rounded-2xl p-0 backdrop:bg-slate-900/50 w-[calc(100%-2rem)] max-w-2xl h-fit max-h-[90vh] overflow-hidden shadow-2xl border-0 bg-white">
+  {/* Modals for All Types */}
+  {[...sortedProjects.map(p => ({ id: p.id, title: p.data.title, description: '', Content: p.Content, url: p.data.url, github: p.data.github, techStack: p.data.techStack })), 
+    ...certifications, ...awards, ...presentations]
+    .filter(item => item.Content || item.description)
+    .map(item => (
+    <dialog id={`modal-${item.id}`} class="fixed inset-0 m-auto rounded-2xl p-0 backdrop:bg-slate-900/50 w-[calc(100%-2rem)] max-w-2xl h-fit max-h-[90vh] overflow-hidden shadow-2xl border-0 bg-white">
       <div class="flex flex-col h-full max-h-[90vh]">
         <header class="p-6 border-b border-slate-100 flex justify-between items-center sticky top-0 bg-white z-10">
-          <h3 class="text-xl font-bold text-slate-900">{project.data.title}</h3>
-          <button class="close-modal text-slate-400 hover:text-slate-600 p-2" data-project-id={project.id}>
+          <h3 class="text-xl font-bold text-slate-900">{item.title || item.name}</h3>
+          <button class="close-modal text-slate-400 hover:text-slate-600 p-2" data-modal-id={`modal-${item.id}`}>
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
         </header>
         <div class="p-8 overflow-y-auto">
-          <div class="flex flex-wrap gap-2 mb-6">
-            {project.data.techStack.map(tech => (
-              <span class="px-3 py-1 bg-blue-50 text-blue-700 text-xs rounded-full font-semibold">{tech}</span>
-            ))}
-          </div>
-          <div class="prose prose-slate max-w-none prose-sm sm:prose-base text-slate-700">
-            <project.Content />
+          {item.techStack && (
+            <div class="flex flex-wrap gap-2 mb-6">
+              {item.techStack.map((tech: string) => (
+                <span class="px-3 py-1 bg-blue-50 text-blue-700 text-xs rounded-full font-semibold">{tech}</span>
+              ))}
+            </div>
+          )}
+          <div class="prose prose-slate max-w-none prose-sm sm:prose-base text-slate-700 whitespace-pre-wrap">
+            {item.Content ? <item.Content /> : item.description}
           </div>
           <div class="mt-10 flex gap-4 border-t border-slate-100 pt-6">
-            {project.data.github && (
-              <a href={project.data.github} target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-4 py-2 bg-slate-900 text-white rounded-lg text-sm font-medium hover:bg-slate-800 transition-colors">
+            {item.github && (
+              <a href={item.github} target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-4 py-2 bg-slate-900 text-white rounded-lg text-sm font-medium hover:bg-slate-800 transition-colors">
                 GitHub
               </a>
             )}
-            {project.data.url && (
-              <a href={project.data.url} target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors">
-                Live Demo
+            {item.url && (
+              <a href={item.url} target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors">
+                {item.github ? 'Live Demo' : '関連リンク'}
               </a>
             )}
           </div>
@@ -229,13 +260,13 @@ const englishName = "azurata";
 
 <script>
   // Modal handling
-  const cards = document.querySelectorAll('.project-card');
+  const triggers = document.querySelectorAll('.modal-trigger');
   const closeButtons = document.querySelectorAll('.close-modal');
 
-  cards.forEach(card => {
-    card.addEventListener('click', () => {
-      const projectId = card.getAttribute('data-project-id');
-      const modal = document.getElementById(`modal-${projectId}`) as HTMLDialogElement;
+  triggers.forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const modalId = trigger.getAttribute('data-modal-id');
+      const modal = document.getElementById(modalId!) as HTMLDialogElement;
       if (modal) {
         modal.showModal();
         document.body.style.overflow = 'hidden';
@@ -245,8 +276,8 @@ const englishName = "azurata";
 
   closeButtons.forEach(button => {
     button.addEventListener('click', () => {
-      const projectId = button.getAttribute('data-project-id');
-      const modal = document.getElementById(`modal-${projectId}`) as HTMLDialogElement;
+      const modalId = button.getAttribute('data-modal-id');
+      const modal = document.getElementById(modalId!) as HTMLDialogElement;
       if (modal) {
         modal.close();
         document.body.style.overflow = '';

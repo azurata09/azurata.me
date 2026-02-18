@@ -1,11 +1,18 @@
 - name: ITパスポート試験 合格
+  issuer: 独立行政法人情報処理推進機構
+  url: https://www3.jitec.ipa.go.jp/JitesCbt/
 - name: "CCNA R&S: Introduction to Networks 修了"
   issuer: Cisco Networking Academy
+  url: https://www.netacad.com/courses/ccna-introduction-networks?courseLang=ja-JP
 - name: "CCNA R&S: Routing and Switching Essentials 修了"
   issuer: Cisco Networking Academy
+  url: https://www.netacad.com/courses/ccna-switching-routing-wireless-essentials?courseLang=ja-JP
 - name: Introduction to Cybersecurity 修了
   issuer: Cisco Networking Academy
+  url: https://www.netacad.com/courses/introduction-to-cybersecurity?courseLang=ja-JP
 - name: 表計算検定試験 1級 合格
   issuer: 日本情報処理技術検定
+  url: https://www.goukaku.ne.jp/test_jyoho.html
 - name: ホームページ作成検定試験 1級 合格
   issuer: 日本情報処理技術検定
+  url: https://www.goukaku.ne.jp/test_home.html

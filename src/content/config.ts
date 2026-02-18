@@ -27,6 +27,8 @@ const certifications = defineCollection({
     name: z.string(),
     issuer: z.string().optional(),
     date: z.string().optional(),
+    url: z.string().url().optional(),
+    description: z.string().optional(),
   })),
 });
 
@@ -37,6 +39,7 @@ const awards = defineCollection({
     event: z.string().optional(),
     url: z.string().url().optional(),
     date: z.string().optional(),
+    description: z.string().optional(),
   })),
 });
 
@@ -47,6 +50,7 @@ const presentations = defineCollection({
     event: z.string(),
     url: z.string().url().optional(),
     date: z.string().optional(),
+    description: z.string().optional(),
   })),
 });
 

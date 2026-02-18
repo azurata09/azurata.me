@@ -5,8 +5,8 @@ import { Image } from 'astro:assets';
 import userIcon from '../assets/icon.png';
 
 // データの取得
-const education = await getCollection('education');
-const experience = await getCollection('experience');
+const education = (await getCollection('education')).sort((a, b) => a.id.localeCompare(b.id));
+const experience = (await getCollection('experience')).sort((a, b) => a.id.localeCompare(b.id));
 
 // リスト形式のデータ（単一ファイルから取得）
 const certificationsEntry = await getEntry('certifications', 'list');

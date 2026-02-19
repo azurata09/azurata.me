@@ -39,11 +39,7 @@ const presentations = (presentationsEntry?.data || []).map((item: any, index: nu
 const projects = await getCollection('projects');
 const sortedProjects = await Promise.all(
   projects
-    .filter(p => {
-      // 01-dummy.md, en/01-dummy.md などの ID 形式
-      if (lang === 'ja') return !p.id.includes('/');
-      return p.id.startsWith(`${lang}/`);
-    })
+    .filter(p => p.id.startsWith(`${lang}/`))
     .sort((a, b) => a.data.order - b.data.order)
     .map(async (project) => {
       const { Content } = await render(project);

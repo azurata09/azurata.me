@@ -1,9 +1,9 @@
 ---
-title: ダミープロジェクト 2
-description: 2番目のダミープロジェクトです。Node.js と PostgreSQL を使用したバックエンドシステムです。
+title: Dummy Project 2
+description: This is the second dummy project. A backend system using Node.js and PostgreSQL.
 techStack: ["Node.js", "Express", "PostgreSQL"]
 url: https://example.com
 github: https://github.com
 order: 2
 ---
-プロジェクト2の詳細な説明がここに入ります。
+Detailed description of Project 2 goes here.

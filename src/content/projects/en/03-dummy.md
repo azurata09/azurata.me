@@ -1,9 +1,9 @@
 ---
-title: ダミープロジェクト 3
-description: 3番目のダミープロジェクトです。Python を使用したデータ分析ツールです。
+title: Dummy Project 3
+description: This is the third dummy project. A data analysis tool using Python.
 techStack: ["Python", "Pandas", "Matplotlib"]
 url: https://example.com
 github: https://github.com
 order: 3
 ---
-プロジェクト3の詳細な説明がここに入ります。
+Detailed description of Project 3 goes here.

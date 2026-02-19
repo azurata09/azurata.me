@@ -2,23 +2,23 @@ import { defineCollection, z } from 'astro:content';
 
 const education = defineCollection({
   type: 'data',
-  schema: z.object({
+  schema: z.array(z.object({
     period: z.string(),
     institution: z.string(),
     department: z.string().optional(),
     url: z.string().url().optional(),
-  }),
+  })),
 });
 
 const experience = defineCollection({
   type: 'data',
-  schema: z.object({
+  schema: z.array(z.object({
     period: z.string(),
     company: z.string(),
     role: z.string(),
     url: z.string().url().optional(),
     description: z.string().optional(),
-  }),
+  })),
 });
 
 const certifications = defineCollection({
@@ -67,6 +67,10 @@ const projects = defineCollection({
   }),
 });
 
+const about = defineCollection({
+  type: 'content',
+});
+
 export const collections = {
   education,
   experience,
@@ -74,4 +78,5 @@ export const collections = {
   awards,
   presentations,
   projects,
+  about,
 };

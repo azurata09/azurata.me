@@ -5,26 +5,25 @@ import { Image } from "astro:assets";
 import userIcon from "../assets/icon.png";
 
 // データの取得
-const education = (await getCollection("education")).sort((a, b) =>
-  a.id.localeCompare(b.id),
-);
-const experience = (await getCollection("experience")).sort((a, b) =>
-  a.id.localeCompare(b.id),
-);
+const educationEntry = await getEntry('education', 'ja');
+const education = educationEntry?.data || [];
+
+const experienceEntry = await getEntry('experience', 'ja');
+const experience = experienceEntry?.data || [];
 
 // リスト形式のデータ（単一ファイルから取得）
-const certificationsEntry = await getEntry("certifications", "list");
+const certificationsEntry = await getEntry("certifications", "ja");
 const certifications = (certificationsEntry?.data || []).map(
   (item: any, index: number) => ({ ...item, id: `cert-${index}` }),
 );
 
-const awardsEntry = await getEntry("awards", "list");
+const awardsEntry = await getEntry("awards", "ja");
 const awards = (awardsEntry?.data || []).map((item: any, index: number) => ({
   ...item,
   id: `award-${index}`,
 }));
 
-const presentationsEntry = await getEntry("presentations", "list");
+const presentationsEntry = await getEntry("presentations", "ja");
 const presentations = (presentationsEntry?.data || []).map(
   (item: any, index: number) => ({ ...item, id: `pres-${index}` }),
 );
@@ -136,7 +135,7 @@ const englishName = "azurata / S.Naka";
         准教授）。興味のある分野は、ユビキタスコンピューティング、ストレス推定などです。
       </p>
       <p>
-        これまで、Webアプリケーションの開発・組み込みシステムの開発・プロジェクトマネジメントの3分野に取り組んできました。フロントエンドでは、Vue.jsやReactをTypeScriptで実装することを得意としており、バックエンド開発ではJavaScript、TypeScript、Pythonを用いることが多いです。また、UMLを活用したソフトウェア設計経験もあります。プロジェクトマネジメントでは、多くのチームでプロダクトの提案・チームリードを行ってきました。
+        これまで、Webアプリケーションの開発・組み込みシステムの開発・プロジェクトマネジメントの3分野に取り組んできました。フロントエンドでは、Vue.jsやReactをTypeScriptで実装することを得意としており、バックエンド開発ではJavaScript、TypeScript、Pythonを用いることが多いです。また、UMLを活用したソフトウェア設計経験もあります。プロジェクトマネジメントでは、多くのチームでプロダクトの提案・チームリードを行ってきた。
       </p>
       <p>
         私の強みは、主体的に行動し、自ら学び挑戦し続ける姿勢です。どのチームに属しても、何か判断をするときは「なぜこういう実装・判断になっているのか」を重要視し、自分のなかで納得ができるまで学びます。加えて、技術的なスキルを磨くだけでなく、プロジェクトの目的や意義を理解し、チームで協力しながら成果を生み出すことを大切にしています。
@@ -154,26 +153,26 @@ const englishName = "azurata / S.Naka";
       </h2>
       <div class="space-y-6">
         {
-          education.map((item) => (
+          education.map((item: any) => (
             <div class="relative pl-4 border-l-2 border-slate-200">
               <span class="text-sm text-slate-500 block mb-1">
-                {item.data.period}
+                {item.period}
               </span>
               <h3 class="font-bold text-slate-800">
-                {item.data.url ? (
+                {item.url ? (
                   <a
-                    href={item.data.url}
+                    href={item.url}
                     class="hover:text-blue-600"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    {item.data.institution}
+                    {item.institution}
                   </a>
                 ) : (
-                  item.data.institution
+                  item.institution
                 )}
               </h3>
-              <p class="text-sm text-slate-600">{item.data.department}</p>
+              <p class="text-sm text-slate-600">{item.department}</p>
             </div>
           ))
         }
@@ -188,28 +187,28 @@ const englishName = "azurata / S.Naka";
       </h2>
       <div class="space-y-6">
         {
-          experience.map((item) => (
+          experience.map((item: any) => (
             <div class="relative pl-4 border-l-2 border-slate-200">
               <span class="text-sm text-slate-500 block mb-1">
-                {item.data.period}
+                {item.period}
               </span>
               <h3 class="font-bold text-slate-800">
-                {item.data.url ? (
+                {item.url ? (
                   <a
-                    href={item.data.url}
+                    href={item.url}
                     class="hover:text-blue-600"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    {item.data.company}
+                    {item.company}
                   </a>
                 ) : (
-                  item.data.company
+                  item.company
                 )}
               </h3>
-              <p class="text-sm text-slate-600 mb-2">{item.data.role}</p>
-              {item.data.description && (
-                <p class="text-xs text-slate-500">{item.data.description}</p>
+              <p class="text-sm text-slate-600 mb-2">{item.role}</p>
+              {item.description && (
+                <p class="text-xs text-slate-500">{item.description}</p>
               )}
             </div>
           ))

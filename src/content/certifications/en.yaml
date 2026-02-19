@@ -1,0 +1,9 @@
+- name: Information Technology Passport Examination
+  issuer: IPA
+  date: "2019"
+- name: Information Security Management Examination
+  issuer: IPA
+  date: "2021"
+- name: Applied Information Technology Engineer Examination
+  issuer: IPA
+  date: "2023"

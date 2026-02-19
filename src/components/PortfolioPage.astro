@@ -50,7 +50,7 @@ const sortedProjects = await Promise.all(
 const aboutEntry = await getEntry('about', lang);
 const { Content: AboutContent } = aboutEntry ? await render(aboutEntry) : { Content: null };
 
-const name = lang === 'ja' ? "あずらた" : "azurata";
+const name = lang === 'ja' ? "あずらた / S.Naka" : "azurata / S.Naka";
 ---
 
 <Layout title={`${name} | Portfolio`} lang={lang}>

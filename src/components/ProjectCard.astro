@@ -1,0 +1,25 @@
+---
+interface Props {
+  id: string;
+  title: string;
+  description: string;
+  techStack: string[];
+  viewDetailsText: string;
+}
+
+const { id, title, description, techStack, viewDetailsText } = Astro.props;
+---
+
+<button 
+  class="modal-trigger text-left bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-all group w-full"
+  data-modal-id={`modal-${id}`}
+>
+  <h3 class="font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">{title}</h3>
+  <p class="text-sm text-slate-600 mb-4 line-clamp-2">{description}</p>
+  <div class="flex flex-wrap gap-2 mb-4">
+    {techStack.map(tech => (
+      <span class="px-2 py-1 bg-slate-100 text-slate-600 text-[10px] rounded font-medium uppercase tracking-wider">{tech}</span>
+    ))}
+  </div>
+  <div class="text-xs text-blue-600 font-medium opacity-0 group-hover:opacity-100 transition-opacity">{viewDetailsText} &rarr;</div>
+</button>

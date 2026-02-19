@@ -1,16 +1,19 @@
 ---
+import { languages, useTranslations } from '../i18n/ui';
 import '../styles/global.css'
 
 interface Props {
 	title: string;
 	description?: string;
+	lang: 'ja' | 'en';
 }
 
-const { title, description = "あずらたのポートフォリオサイトです。" } = Astro.props;
+const { title, description = "あずらたのポートフォリオサイトです。", lang } = Astro.props;
+const t = useTranslations(lang);
 ---
 
 <!doctype html>
-<html lang="ja">
+<html lang={lang}>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -24,11 +27,22 @@ const { title, description = "あずらたのポートフォリオサイトで�
 	</head>
 	<body class="bg-slate-50 text-slate-900 font-sans antialiased">
 		<div class="max-w-4xl mx-auto px-6 py-12 md:py-20">
+			<nav class="flex justify-end gap-4 mb-8 text-sm font-medium">
+				{Object.entries(languages).map(([code, label]) => (
+					<a 
+						href={code === 'ja' ? '/' : `/${code}/`} 
+						class={`transition-colors hover:text-blue-600 ${lang === code ? 'text-blue-600' : 'text-slate-400'}`}
+					>
+						{label}
+					</a>
+				))}
+			</nav>
+
 			<main>
 				<slot />
 			</main>
 			<footer class="mt-20 pt-8 border-t border-slate-200 text-slate-500 text-sm text-center">
-				<p>&copy; {new Date().getFullYear()} azurata. Built with Astro & Tailwind CSS.</p>
+				<p>&copy; {new Date().getFullYear()} azurata. {t('footer.builtWith')}</p>
 			</footer>
 		</div>
 	</body>

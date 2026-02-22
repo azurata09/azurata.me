@@ -1,9 +1,15 @@
 - name: Information Technology Passport Examination
   issuer: IPA
+  date: "2020"
+- name: "CCNA R&S: Introduction to Networks"
+  issuer: Cisco Networking Academy
+  url: https://www.netacad.com/courses/ccna-introduction-networks?courseLang=en-US
   date: "2019"
-- name: Information Security Management Examination
-  issuer: IPA
-  date: "2021"
-- name: Applied Information Technology Engineer Examination
-  issuer: IPA
-  date: "2023"
+- name: "CCNA R&S: Routing and Switching Essentials"
+  issuer: Cisco Networking Academy
+  url: https://www.netacad.com/courses/ccna-switching-routing-wireless-essentials?courseLang=en-US
+  date: "2020"
+- name: Introduction to Cybersecurity
+  issuer: Cisco Networking Academy
+  url: https://www.netacad.com/courses/introduction-to-cybersecurity?courseLang=en-US
+  date: "2020"

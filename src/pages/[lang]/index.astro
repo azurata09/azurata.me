@@ -1,0 +1,15 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PortfolioPage from '../../components/PortfolioPage.astro';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'en' } },
+    { params: { lang: 'ja' } },
+  ];
+}
+
+const { lang } = Astro.params;
+---
+
+<PortfolioPage lang={lang as 'ja' | 'en'} />

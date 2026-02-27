@@ -1,0 +1,18 @@
+---
+interface Props {
+  title: string;
+  dotColor: string;
+}
+
+const { title, dotColor } = Astro.props;
+---
+
+<div>
+  <h3 class="font-bold text-slate-800 mb-4 flex items-center text-lg">
+    <span class={`w-2 h-2 ${dotColor} rounded-full mr-2`}></span>
+    {title}
+  </h3>
+  <ul class="space-y-4 text-slate-700">
+    <slot />
+  </ul>
+</div>

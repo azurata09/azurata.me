@@ -1,0 +1,26 @@
+---
+interface Props {
+  period: string;
+  title: string;
+  subtitle?: string;
+  url?: string;
+  description?: string;
+}
+
+const { period, title, subtitle, url, description } = Astro.props;
+---
+
+<div class="relative pl-4 border-l-2 border-slate-200">
+  <span class="text-sm text-slate-500 block mb-1">{period}</span>
+  <h3 class="font-bold text-slate-800">
+    {url ? (
+      <a href={url} class="hover:text-blue-600 transition-colors" target="_blank" rel="noopener noreferrer">
+        {title}
+      </a>
+    ) : (
+      title
+    )}
+  </h3>
+  {subtitle && <p class="text-sm text-slate-600">{subtitle}</p>}
+  {description && <p class="text-xs text-slate-500 mt-2">{description}</p>}
+</div>

@@ -1,0 +1,229 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection, getEntry, render } from 'astro:content';
+import { useTranslations } from '../i18n/ui';
+
+// Components
+import Hero from './Hero.astro';
+import About from './About.astro';
+import Timeline from './Timeline.astro';
+import TimelineItem from './TimelineItem.astro';
+import AchievementList from './AchievementList.astro';
+import ProjectCard from './ProjectCard.astro';
+import Modal from './Modal.astro';
+
+interface Props {
+  lang: 'ja' | 'en';
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+// データの取得
+const educationEntry = await getEntry('education', lang);
+const education = educationEntry?.data || [];
+
+const experienceEntry = await getEntry('experience', lang);
+const experience = experienceEntry?.data || [];
+
+const certificationsEntry = await getEntry('certifications', lang);
+const certifications = (certificationsEntry?.data || []).map((item: any, index: number) => ({ ...item, id: `cert-${index}` }));
+
+const awardsEntry = await getEntry('awards', lang);
+const awards = (awardsEntry?.data || []).map((item: any, index: number) => ({ ...item, id: `award-${index}` }));
+
+const presentationsEntry = await getEntry('presentations', lang);
+const presentations = (presentationsEntry?.data || []).map((item: any, index: number) => ({ ...item, id: `pres-${index}` }));
+
+// プロジェクトはフォルダ構造で言語分け
+const projects = await getCollection('projects');
+const sortedProjects = await Promise.all(
+  projects
+    .filter(p => p.id.startsWith(`${lang}/`))
+    .sort((a, b) => a.data.order - b.data.order)
+    .map(async (project) => {
+      const { Content } = await render(project);
+      return { ...project, Content };
+    })
+);
+
+const aboutEntry = await getEntry('about', lang);
+const { Content: AboutContent } = aboutEntry ? await render(aboutEntry) : { Content: null };
+
+const name = lang === 'ja' ? "あずらた / S.Naka" : "azurata / S.Naka";
+---
+
+<Layout title={`${name} | Portfolio`} lang={lang}>
+  <Hero name={name} />
+
+  <About title={t('section.about')}>
+    {AboutContent && <AboutContent />}
+  </About>
+
+  <div class="grid md:grid-cols-2 gap-12 mb-16">
+    <Timeline title={t('section.education')}>
+      {education.map((item: any) => (
+        <TimelineItem 
+          period={item.period} 
+          title={item.institution} 
+          subtitle={item.department} 
+          url={item.url} 
+        />
+      ))}
+    </Timeline>
+
+    <Timeline title={t('section.experience')}>
+      {experience.map((item: any) => (
+        <TimelineItem 
+          period={item.period} 
+          title={item.company} 
+          subtitle={item.role} 
+          url={item.url} 
+          description={item.description}
+        />
+      ))}
+    </Timeline>
+  </div>
+
+  <section class="mb-16">
+    <h2 class="text-2xl font-bold text-slate-900 mb-6 pb-2 border-b border-slate-200">{t('section.achievements')}</h2>
+    
+    <div class="space-y-8">
+      <AchievementList title={t('section.certifications')} dotColor="bg-blue-500">
+        {certifications.map((item: any) => (
+          <li class="flex flex-col sm:flex-row sm:justify-between items-start gap-1 border-l-2 border-blue-100 pl-4 group">
+            <div class="flex flex-col gap-1">
+              <span class="text-sm flex items-center gap-1">
+                {item.description ? (
+                  <button class="modal-trigger text-left hover:text-blue-600 transition-colors font-medium" data-modal-id={`modal-${item.id}`}>
+                    {item.name}
+                  </button>
+                ) : (
+                  item.url ? <a href={item.url} target="_blank" rel="noopener noreferrer" class="hover:text-blue-600 transition-colors font-medium">{item.name}</a> : <span class="font-medium">{item.name}</span>
+                )}
+                {item.url && !item.description && <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>}
+              </span>
+              {item.issuer && <span class="text-xs text-slate-500">{item.issuer}</span>}
+            </div>
+            {item.date && <span class="text-xs text-slate-400 whitespace-nowrap">{item.date}</span>}
+          </li>
+        ))}
+      </AchievementList>
+
+      <AchievementList title={t('section.awards')} dotColor="bg-orange-500">
+        {awards.map((item: any) => (
+          <li class="flex flex-col sm:flex-row sm:justify-between items-start gap-1 border-l-2 border-orange-100 pl-4 group">
+            <span class="text-sm text-slate-700 flex items-center gap-1">
+              {item.description ? (
+                <button class="modal-trigger text-left hover:text-blue-600 transition-colors font-medium" data-modal-id={`modal-${item.id}`}>
+                  {item.title}
+                </button>
+              ) : (
+                item.url ? <a href={item.url} target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">{item.title}</a> : item.title
+              )}
+              {item.url && !item.description && <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>}
+            </span>
+            <span class="text-xs text-slate-400 whitespace-nowrap">{item.date}</span>
+          </li>
+        ))}
+      </AchievementList>
+
+      <AchievementList title={t('section.presentations')} dotColor="bg-green-500">
+        {presentations.map((item: any) => (
+          <li class="flex flex-col gap-1 border-l-2 border-green-100 pl-4 group">
+            <span class="text-sm font-medium text-slate-700 flex items-center gap-1">
+              {item.description ? (
+                <button class="modal-trigger text-left hover:text-blue-600 transition-colors" data-modal-id={`modal-${item.id}`}>
+                  {item.title}
+                </button>
+              ) : (
+                item.url ? <a href={item.url} target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">{item.title}</a> : item.title
+              )}
+              {item.url && !item.description && <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>}
+            </span>
+            <span class="text-xs text-slate-500">{item.event}</span>
+          </li>
+        ))}
+      </AchievementList>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="text-2xl font-bold text-slate-900 mb-6 pb-2 border-b border-slate-200">{t('section.projects')}</h2>
+    <div class="grid sm:grid-cols-2 gap-6">
+      {sortedProjects.map(project => (
+        <ProjectCard 
+          id={project.id.replace(/\//g, '-') /* slash in ID breaks CSS selectors */} 
+          title={project.data.title}
+          description={project.data.description}
+          techStack={project.data.techStack}
+          viewDetailsText={t('project.viewDetails')}
+        />
+      ))}
+    </div>
+  </section>
+
+  {/* Modals */}
+  {[...sortedProjects.map(p => ({ id: p.id.replace(/\//g, '-'), title: p.data.title, description: '', Content: p.Content, url: p.data.url, github: p.data.github, techStack: p.data.techStack })), 
+    ...certifications, ...awards, ...presentations]
+    .filter(item => item.Content || item.description)
+    .map(item => (
+      <Modal 
+        id={item.id} 
+        title={item.title || item.name} 
+        techStack={item.techStack}
+        github={item.github}
+        url={item.url}
+        githubLabel="GitHub"
+        urlLabel={item.github ? t('modal.liveDemo') : t('modal.relatedLinks')}
+      >
+        {item.Content ? <item.Content /> : item.description}
+      </Modal>
+  ))}
+</Layout>
+
+<script>
+  // Modal handling
+  function setupModals() {
+    const triggers = document.querySelectorAll('.modal-trigger');
+    const closeButtons = document.querySelectorAll('.close-modal');
+
+    triggers.forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const modalId = trigger.getAttribute('data-modal-id');
+        const modal = document.getElementById(modalId!) as HTMLDialogElement;
+        if (modal) {
+          modal.showModal();
+          document.body.style.overflow = 'hidden';
+        }
+      });
+    });
+
+    closeButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const modalId = button.getAttribute('data-modal-id');
+        const modal = document.getElementById(modalId!) as HTMLDialogElement;
+        if (modal) {
+          modal.close();
+          document.body.style.overflow = '';
+        }
+      });
+    });
+
+    const dialogs = document.querySelectorAll('dialog');
+    dialogs.forEach(dialog => {
+      dialog.addEventListener('click', (e) => {
+        if (e.target === dialog) {
+          dialog.close();
+          document.body.style.overflow = '';
+        }
+      });
+    });
+  }
+
+  // Initial setup
+  setupModals();
+
+  // Re-setup on view transitions if used
+  document.addEventListener('astro:after-swap', setupModals);
+</script>

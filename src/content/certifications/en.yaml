@@ -13,3 +13,10 @@
   issuer: Cisco Networking Academy
   url: https://www.netacad.com/courses/introduction-to-cybersecurity?courseLang=en-US
   date: "2020"
+- name: UCD Workshop / Certificate of Training Completion
+  issuer: Future University Hakodate
+  url: https://www.fun.ac.jp/enpit#1-3
+- name: Data Science Open Program Future University Hakodate
+  issuer: Future University Hakodate
+  url: https://www.fun.ac.jp/dsop
+

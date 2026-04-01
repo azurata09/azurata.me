@@ -20,3 +20,10 @@
 - name: ホームページ作成検定試験 1級 合格
   issuer: 日本情報処理技術検定
   url: https://www.goukaku.ne.jp/test_home.html
+- name: UCD Workshop 修了
+  issuer: 公立はこだて未来大学
+  url: https://www.fun.ac.jp/enpit#1-3
+- name: 公立はこだて未来大学データサイエンスオープンプログラム 修了
+  issuer: 公立はこだて未来大学
+  url: https://www.fun.ac.jp/dsop
+

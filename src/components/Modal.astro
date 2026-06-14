@@ -23,7 +23,7 @@ const { id, title, techStack, github, url, githubLabel = "GitHub", urlLabel = "L
       </button>
     </header>
     <div class="p-8 overflow-y-auto">
-      {techStack && (
+      {techStack && techStack.length > 0 && (
         <div class="flex flex-wrap gap-2 mb-6">
           {techStack.map((tech: string) => (
             <span class="px-3 py-1 bg-blue-50 text-blue-700 text-xs rounded-full font-semibold">{tech}</span>
